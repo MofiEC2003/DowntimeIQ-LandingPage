@@ -41,10 +41,13 @@
   </header>
 
   <!-- Hero -->
-  <section class="relative overflow-hidden">
-    <div class="absolute -top-32 -right-16 w-[36rem] h-[36rem] rounded-full bg-slate-100"></div>
-    <div class="absolute -bottom-40 -left-24 w-[30rem] h-[30rem] rounded-full bg-slate-50"></div>
-    <div class="max-w-7xl mx-auto px-4 section grid md:grid-cols-2 gap-10 items-center">
+  <section class="relative">
+    <div class="absolute inset-0 -z-10 pointer-events-none">
+      <div class="absolute -top-32 -right-16 w-[24rem] h-[24rem] rounded-full bg-slate-100 opacity-40"></div>
+      <div class="absolute -bottom-40 -left-24 w-[18rem] h-[18rem] rounded-full bg-slate-50 opacity-40"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 section grid md:grid-cols-2 gap-10 items-center relative z-10">
+
       <div>
         <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
           Reduce <span class="text-brand">tiempos muertos</span> y mejora tu <span class="underline decoration-brand/30">OEE</span>
