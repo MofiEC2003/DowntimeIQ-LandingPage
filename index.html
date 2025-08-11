@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DowntimeIQ</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #1e293b; background: #fff; }
+  header { position: sticky; top: 0; background: #ffffffcc; backdrop-filter: blur(8px); border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; }
+  header img { width: 36px; height: 36px; border-radius: 8px; object-fit: contain; }
+  nav a { margin-left: 1rem; text-decoration: none; color: #475569; font-size: 0.875rem; }
+  nav a:hover { color: #334155; }
+  .hero { display: grid; gap: 2rem; padding: 2rem 1rem; max-width: 1100px; margin: auto; grid-template-columns: 1fr 1fr; align-items: center; }
+  .hero h1 { font-size: 2.25rem; font-weight: 800; line-height: 1.2; }
+  .hero p { margin-top: 1rem; font-size: 1.125rem; color: #475569; }
+  .btn { display: inline-block; padding: 0.75rem 1.5rem; border-radius: 1rem; font-weight: 500; text-decoration: none; }
+  .btn-primary { background: #0f172a; color: #fff; }
+  .btn-outline { border: 1px solid #e2e8f0; color: #1e293b; }
+  .features { max-width: 1100px; margin: auto; padding: 2rem 1rem; }
+  .features h2 { font-size: 1.5rem; font-weight: bold; }
+  .features-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); margin-top: 1rem; }
+  .feature { border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1rem; background: #fff; }
+  .contact { max-width: 1100px; margin: auto; padding: 2rem 1rem; }
+  .contact form { display: flex; flex-direction: column; gap: 0.5rem; max-width: 400px; }
+  .contact input { padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 0.75rem; }
+  .contact button { padding: 0.75rem; background: #0f172a; color: white; border: none; border-radius: 0.75rem; }
+  .whatsapp-btn { display: inline-block; margin-top: 1rem; padding: 0.75rem 1.5rem; background: #25D366; color: white; border-radius: 1rem; text-decoration: none; font-weight: 500; }
+  footer { border-top: 1px solid #e2e8f0; padding: 1rem; text-align: center; font-size: 0.875rem; color: #64748b; }
+</style>
+</head>
+<body>
+<header>
+  <div style="display:flex;align-items:center;gap:0.5rem;">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAABoElEQVR4nO3bvUoDQRiF4SeECIpQpU7BAIkeIAtKzRBIyQlIdAlHyDjCN+0H2SDikDK6sdncnTudqkJXv7u2fP7XYbAAAAAAAAAAB3q6s7pZCbmZnJzMwsYqKiWr2wXjuKnZ2dzczMLKKioiYr8gD2f0v5jSzZz8zMLGKiolrNwxV5tk60w6beejAzs4qKimp0J0jycpV1PluKZV4RWbpOJkdYq+75OEo5r8q8rFG9QXYqLvd2LeXKPyufZYlc4xTJbntD/hzNFG39WznqvcZpc3yWq81krx9zy/Y+n69uU3yGzZ9Mf6KxjnHn8A7LqMrdEoL5fRwnZk+Qd9dxeLU3uVSM6cuu4UKMxkB2dM2HHur7DlVK3LMeoXwHzAr13gBvhUmfgMr7PGXeoXGf9np7UsAAAAAAAAAAADA6V8uKxvxOBBeZAAAAABJRU5ErkJggg==" alt="DowntimeIQ logo">
+    <span style="font-weight:600;">DowntimeIQ</span>
+  </div>
+  <nav>
+    <a href="#features">Características</a>
+    <a href="#contact">Contacto</a>
+  </nav>
+</header>
+<section class="hero">
+  <div>
+    <h1>Controla y reduce los tiempos muertos desde el día uno</h1>
+    <p>DowntimeIQ centraliza paros, causas y desempeño de tu planta para que tomes decisiones en minutos, no semanas.</p>
+    <a href="#contact" class="btn btn-primary">Solicitar demo</a>
+    <a href="#features" class="btn btn-outline">Ver características</a>
+  </div>
+  <div>
+    <img src="https://via.placeholder.com/500x300" alt="Demo dashboard" style="border-radius:1rem;border:1px solid #e2e8f0;">
+  </div>
+</section>
+<section id="features" class="features">
+  <h2>Todo lo que necesitas para dominar el downtime</h2>
+  <div class="features-grid">
+    <div class="feature">Captura ágil en piso: Operadores registran paros en segundos desde móvil o tablet.</div>
+    <div class="feature">KPIs automáticos: OEE, MTTR, MTTF y Pareto sin hojas de cálculo.</div>
+    <div class="feature">Alertas y seguimiento: Notificaciones ante umbrales de paro.</div>
+    <div class="feature">Roles y seguridad: Permisos por área y trazabilidad.</div>
+  </div>
+</section>
+<section id="contact" class="contact">
+  <h2>Agenda una demo</h2>
+  <form onsubmit="event.preventDefault(); window.location.href = 'mailto:arturoescobos@hotmail.com?subject=Interés en DowntimeIQ&body=Hola, me interesa DowntimeIQ. Mi correo es: ' + encodeURIComponent(this.email.value);">
+    <input type="email" name="email" placeholder="tu@empresa.com" required>
+    <button type="submit">Enviar</button>
+  </form>
+  <a href="https://wa.me/5213121217240?text=Hola%20me%20interesa%20DowntimeIQ" target="_blank" class="whatsapp-btn">Contactar por WhatsApp</a>
+</section>
+<footer>
+  © 2025 DowntimeIQ. Todos los derechos reservados.
+</footer>
+</body>
+</html>
