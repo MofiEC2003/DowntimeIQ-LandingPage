@@ -1,74 +1,268 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DowntimeIQ</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DowntimeIQ — Reduce tiempos muertos y mejora tu OEE</title>
+<meta name="description" content="DowntimeIQ centraliza paros, causas y KPIs (OEE, MTTR, MTTF) para atacar cuellos de botella y reducir tiempos muertos desde el día uno.">
+<meta name="theme-color" content="#0f172a">
+<meta property="og:title" content="DowntimeIQ — Control de downtime en planta">
+<meta property="og:description" content="Implementación rápida, KPIs automáticos y reportes listos para gerencia.">
+<meta property="og:type" content="website">
+<!-- Favicon (data URI) -->
+<link rel="icon" type="image/png" href="data:image/png;base64,">
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config = { theme: { extend: { colors: { brand: '#0f172a', brand2: '#22c55e' } } } };</script>
 <style>
-  body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #1e293b; background: #fff; }
-  header { position: sticky; top: 0; background: #ffffffcc; backdrop-filter: blur(8px); border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; }
-  header img { width: 36px; height: 36px; border-radius: 8px; object-fit: contain; }
-  nav a { margin-left: 1rem; text-decoration: none; color: #475569; font-size: 0.875rem; }
-  nav a:hover { color: #334155; }
-  .hero { display: grid; gap: 2rem; padding: 2rem 1rem; max-width: 1100px; margin: auto; grid-template-columns: 1fr 1fr; align-items: center; }
-  .hero h1 { font-size: 2.25rem; font-weight: 800; line-height: 1.2; }
-  .hero p { margin-top: 1rem; font-size: 1.125rem; color: #475569; }
-  .btn { display: inline-block; padding: 0.75rem 1.5rem; border-radius: 1rem; font-weight: 500; text-decoration: none; }
-  .btn-primary { background: #0f172a; color: #fff; }
-  .btn-outline { border: 1px solid #e2e8f0; color: #1e293b; }
-  .features { max-width: 1100px; margin: auto; padding: 2rem 1rem; }
-  .features h2 { font-size: 1.5rem; font-weight: bold; }
-  .features-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); margin-top: 1rem; }
-  .feature { border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1rem; background: #fff; }
-  .contact { max-width: 1100px; margin: auto; padding: 2rem 1rem; }
-  .contact form { display: flex; flex-direction: column; gap: 0.5rem; max-width: 400px; }
-  .contact input { padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 0.75rem; }
-  .contact button { padding: 0.75rem; background: #0f172a; color: white; border: none; border-radius: 0.75rem; }
-  .whatsapp-btn { display: inline-block; margin-top: 1rem; padding: 0.75rem 1.5rem; background: #25D366; color: white; border-radius: 1rem; text-decoration: none; font-weight: 500; }
-  footer { border-top: 1px solid #e2e8f0; padding: 1rem; text-align: center; font-size: 0.875rem; color: #64748b; }
+  html { scroll-behavior:smooth }
+  .glass { background: rgba(255,255,255,.7); backdrop-filter: blur(10px); }
+  .shadow-soft { box-shadow: 0 10px 30px rgba(2,6,23,.08); }
+  .section { padding-block: 5rem; }
 </style>
 </head>
-<body>
-<header>
-  <div style="display:flex;align-items:center;gap:0.5rem;">
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAABoElEQVR4nO3bvUoDQRiF4SeECIpQpU7BAIkeIAtKzRBIyQlIdAlHyDjCN+0H2SDikDK6sdncnTudqkJXv7u2fP7XYbAAAAAAAAAAB3q6s7pZCbmZnJzMwsYqKiWr2wXjuKnZ2dzczMLKKioiYr8gD2f0v5jSzZz8zMLGKiolrNwxV5tk60w6beejAzs4qKimp0J0jycpV1PluKZV4RWbpOJkdYq+75OEo5r8q8rFG9QXYqLvd2LeXKPyufZYlc4xTJbntD/hzNFG39WznqvcZpc3yWq81krx9zy/Y+n69uU3yGzZ9Mf6KxjnHn8A7LqMrdEoL5fRwnZk+Qd9dxeLU3uVSM6cuu4UKMxkB2dM2HHur7DlVK3LMeoXwHzAr13gBvhUmfgMr7PGXeoXGf9np7UsAAAAAAAAAAADA6V8uKxvxOBBeZAAAAABJRU5ErkJggg==" alt="DowntimeIQ logo">
-    <span style="font-weight:600;">DowntimeIQ</span>
-  </div>
-  <nav>
-    <a href="#features">Características</a>
-    <a href="#contact">Contacto</a>
-  </nav>
-</header>
-<section class="hero">
-  <div>
-    <h1>Controla y reduce los tiempos muertos desde el día uno</h1>
-    <p>DowntimeIQ centraliza paros, causas y desempeño de tu planta para que tomes decisiones en minutos, no semanas.</p>
-    <a href="#contact" class="btn btn-primary">Solicitar demo</a>
-    <a href="#features" class="btn btn-outline">Ver características</a>
-  </div>
-  <div>
-    <img src="https://via.placeholder.com/500x300" alt="Demo dashboard" style="border-radius:1rem;border:1px solid #e2e8f0;">
-  </div>
-</section>
-<section id="features" class="features">
-  <h2>Todo lo que necesitas para dominar el downtime</h2>
-  <div class="features-grid">
-    <div class="feature">Captura ágil en piso: Operadores registran paros en segundos desde móvil o tablet.</div>
-    <div class="feature">KPIs automáticos: OEE, MTTR, MTTF y Pareto sin hojas de cálculo.</div>
-    <div class="feature">Alertas y seguimiento: Notificaciones ante umbrales de paro.</div>
-    <div class="feature">Roles y seguridad: Permisos por área y trazabilidad.</div>
-  </div>
-</section>
-<section id="contact" class="contact">
-  <h2>Agenda una demo</h2>
-  <form onsubmit="event.preventDefault(); window.location.href = 'mailto:arturoescobos@hotmail.com?subject=Interés en DowntimeIQ&body=Hola, me interesa DowntimeIQ. Mi correo es: ' + encodeURIComponent(this.email.value);">
-    <input type="email" name="email" placeholder="tu@empresa.com" required>
-    <button type="submit">Enviar</button>
-  </form>
-  <a href="https://wa.me/5213121217240?text=Hola%20me%20interesa%20DowntimeIQ" target="_blank" class="whatsapp-btn">Contactar por WhatsApp</a>
-</section>
-<footer>
-  © 2025 DowntimeIQ. Todos los derechos reservados.
-</footer>
+<body class="text-slate-900 bg-white">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 glass border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        
+        <span class="font-semibold text-lg">DowntimeIQ</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#benefits" class="hover:text-slate-700">Beneficios</a>
+        <a href="#features" class="hover:text-slate-700">Características</a>
+        <a href="#industries" class="hover:text-slate-700">Industrias</a>
+        <a href="#pricing" class="hover:text-slate-700">Precios</a>
+        <a href="#contact" class="hover:text-slate-700">Contacto</a>
+      </nav>
+      <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-brand text-white text-sm shadow-soft">Solicitar demo</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute -top-32 -right-16 w-[36rem] h-[36rem] rounded-full bg-slate-100"></div>
+    <div class="absolute -bottom-40 -left-24 w-[30rem] h-[30rem] rounded-full bg-slate-50"></div>
+    <div class="max-w-7xl mx-auto px-4 section grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
+          Reduce <span class="text-brand">tiempos muertos</span> y mejora tu <span class="underline decoration-brand/30">OEE</span>
+        </h1>
+        <p class="mt-4 text-slate-600 text-lg">Captura de paros en piso, clasificación de causas y KPIs automáticos. Decisiones claras en minutos, no semanas.</p>
+        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+          <a href="#contact" class="inline-flex items-center justify-center px-5 py-3 rounded-2xl bg-brand text-white shadow-soft">Agenda una demo</a>
+          <a href="#features" class="inline-flex items-center justify-center px-5 py-3 rounded-2xl border border-slate-200 hover:bg-slate-50">Ver cómo funciona</a>
+        </div>
+        <div class="mt-6 grid grid-cols-3 gap-4 text-center">
+          <div class="p-4 rounded-2xl border border-slate-200 bg-white"><div class="text-2xl font-extrabold">-25%</div><div class="text-xs text-slate-500">Downtime (60 días)</div></div>
+          <div class="p-4 rounded-2xl border border-slate-200 bg-white"><div class="text-2xl font-extrabold">+15%</div><div class="text-xs text-slate-500">OEE promedio</div></div>
+          <div class="p-4 rounded-2xl border border-slate-200 bg-white"><div class="text-2xl font-extrabold">&lt;30min</div><div class="text-xs text-slate-500">Primer dashboard</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="relative rounded-3xl border border-slate-200 bg-white p-4 shadow-soft">
+          <div class="rounded-2xl border border-slate-200 p-4 bg-gradient-to-br from-slate-50 to-white aspect-video grid place-content-center">
+            <div class="text-slate-500 text-sm">Mockup del dashboard (sustituye por captura real)</div>
+          </div>
+          <div class="absolute -bottom-6 -right-6 w-24 h-24 rotate-6 rounded-2xl bg-slate-100"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section id="benefits" class="section bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold tracking-tight">Resultados que importan</h2>
+      <p class="mt-2 text-slate-600 max-w-2xl">Del registro de eventos al plan de acción, todo en un solo lugar.</p>
+      <div class="mt-8 grid md:grid-cols-3 gap-5">
+        <div class="p-5 rounded-2xl bg-white border border-slate-200">
+          <h3 class="font-semibold">Visibilidad total</h3>
+          <p class="text-sm text-slate-600 mt-1">Pareto de causas, OEE, MTTR/MTTF y disponibilidad por equipo y área.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white border border-slate-200">
+          <h3 class="font-semibold">Ejecución en piso</h3>
+          <p class="text-sm text-slate-600 mt-1">Captura en móvil/tablet con categorías de paro estandarizadas.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white border border-slate-200">
+          <h3 class="font-semibold">Mejora continua</h3>
+          <p class="text-sm text-slate-600 mt-1">Alertas, responsables y seguimiento de acciones correctivas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="section">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold tracking-tight">Características clave</h2>
+      <div class="mt-6 grid md:grid-cols-3 gap-5">
+        <div class="p-5 rounded-2xl border bg-white border-slate-200"><div class="text-xs text-slate-500">01</div><h3 class="font-semibold mt-1">Captura rápida</h3><p class="text-sm text-slate-600 mt-1">Operadores registran evento, causa y tiempo en segundos.</p></div>
+        <div class="p-5 rounded-2xl border bg-white border-slate-200"><div class="text-xs text-slate-500">02</div><h3 class="font-semibold mt-1">KPIs automáticos</h3><p class="text-sm text-slate-600 mt-1">OEE, Pareto y tendencias sin hojas de cálculo.</p></div>
+        <div class="p-5 rounded-2xl border bg-white border-slate-200"><div class="text-xs text-slate-500">03</div><h3 class="font-semibold mt-1">Roles y permisos</h3><p class="text-sm text-slate-600 mt-1">Jerarquías por planta/área/equipo con trazabilidad.</p></div>
+        <div class="p-5 rounded-2xl border bg-white border-slate-200"><div class="text-xs text-slate-500">04</div><h3 class="font-semibold mt-1">Integraciones</h3><p class="text-sm text-slate-600 mt-1">CSV/Google Sheets hoy; API y OPC‑UA en hoja de ruta.</p></div>
+        <div class="p-5 rounded-2xl border bg-white border-slate-200"><div class="text-xs text-slate-500">05</div><h3 class="font-semibold mt-1">Reportes ejecutivos</h3><p class="text-sm text-slate-600 mt-1">PDF/Excel con KPIs y top 5 causas por periodo.</p></div>
+        <div class="p-5 rounded-2xl border bg-white border-slate-200"><div class="text-xs text-slate-500">06</div><h3 class="font-semibold mt-1">Alertas y SLAs</h3><p class="text-sm text-slate-600 mt-1">Umbrales de paro, avisos por email/WhatsApp.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section id="industries" class="section bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold tracking-tight">Beneficios por industria</h2>
+      <div class="mt-6 grid md:grid-cols-3 gap-5">
+        <div class="p-5 rounded-2xl border border-slate-200 bg-white">
+          <h3 class="font-semibold">Automotriz</h3>
+          <p class="text-sm text-slate-600 mt-1">Menos paros no programados; reacción en minutos para proteger líneas just‑in‑time.</p>
+        </div>
+        <div class="p-5 rounded-2xl border border-slate-200 bg-white">
+          <h3 class="font-semibold">Alimentos y bebidas</h3>
+          <p class="text-sm text-slate-600 mt-1">Control sanitario y tiempos de cambio; trazabilidad de causas por turno.</p>
+        </div>
+        <div class="p-5 rounded-2xl border border-slate-200 bg-white">
+          <h3 class="font-semibold">Metalmecánica</h3>
+          <p class="text-sm text-slate-600 mt-1">Disponibilidad por celda; integración con corte/maquinado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold tracking-tight">Lo que dicen los equipos</h2>
+      <div class="mt-6 grid md:grid-cols-3 gap-5">
+        <blockquote class="p-5 rounded-2xl border border-slate-200 bg-white text-sm text-slate-700">“En 30 días identificamos el 80% de los paros recurrentes y bajamos el downtime un 22%.”<div class="mt-2 text-xs text-slate-500">Gerente de Producción</div></blockquote>
+        <blockquote class="p-5 rounded-2xl border border-slate-200 bg-white text-sm text-slate-700">“Los reportes de OEE salen solos; dejamos de pelear con hojas de cálculo.”<div class="mt-2 text-xs text-slate-500">Ingeniería de Procesos</div></blockquote>
+        <blockquote class="p-5 rounded-2xl border border-slate-200 bg-white text-sm text-slate-700">“El equipo de piso captura en segundos; la adopción fue inmediata.”<div class="mt-2 text-xs text-slate-500">Líder de Celda</div></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="section bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold tracking-tight">Precios</h2>
+      <p class="mt-2 text-slate-600 max-w-2xl">Empieza con un piloto y escala por sitios y usuarios.</p>
+      <div class="mt-6 grid md:grid-cols-3 gap-5">
+        <div class="p-6 rounded-2xl border border-slate-200 bg-white">
+          <div class="text-sm text-slate-500">Piloto</div>
+          <div class="mt-1 text-3xl font-extrabold">$0</div>
+          <ul class="mt-3 text-sm text-slate-600 space-y-2">
+            <li>• 1 sitio • 5 usuarios</li>
+            <li>• Tablero base OEE/Paros</li>
+            <li>• Soporte por chat</li>
+          </ul>
+          <a href="#contact" class="mt-4 inline-block px-4 py-2 rounded-xl bg-brand text-white">Probar ahora</a>
+        </div>
+        <div class="p-6 rounded-2xl border-2 border-brand bg-white">
+          <div class="text-sm text-brand">Profesional</div>
+          <div class="mt-1 text-3xl font-extrabold">$ —</div>
+          <ul class="mt-3 text-sm text-slate-600 space-y-2">
+            <li>• Usuarios y sitios flexibles</li>
+            <li>• Alertas y permisos avanzados</li>
+            <li>• Integraciones y reportes</li>
+          </ul>
+          <a href="#contact" class="mt-4 inline-block px-4 py-2 rounded-xl bg-brand text-white">Solicitar cotización</a>
+        </div>
+        <div class="p-6 rounded-2xl border border-slate-200 bg-white">
+          <div class="text-sm text-slate-500">Enterprise</div>
+          <div class="mt-1 text-3xl font-extrabold">$ —</div>
+          <ul class="mt-3 text-sm text-slate-600 space-y-2">
+            <li>• Multi-planta y SSO</li>
+            <li>• SLA dedicado</li>
+            <li>• Roadmap compartido</li>
+          </ul>
+          <a href="#contact" class="mt-4 inline-block px-4 py-2 rounded-xl bg-brand text-white">Hablar con ventas</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold tracking-tight">Preguntas frecuentes</h2>
+      <div class="mt-6 grid md:grid-cols-2 gap-5">
+        <div class="p-5 rounded-2xl border border-slate-200 bg-white">
+          <h3 class="font-medium">¿Necesito sensores o PLCs para empezar?</h3>
+          <p class="text-sm text-slate-600 mt-1">No. Puedes iniciar con captura manual guiada y subir datos por CSV o Google Sheets. API/OPC‑UA en hoja de ruta.</p>
+        </div>
+        <div class="p-5 rounded-2xl border border-slate-200 bg-white">
+          <h3 class="font-medium">¿Cuánto tarda la implementación?</h3>
+          <p class="text-sm text-slate-600 mt-1">Setup base en el mismo día; primer dashboard en menos de 30 minutos.</p>
+        </div>
+        <div class="p-5 rounded-2xl border border-slate-200 bg-white">
+          <h3 class="font-medium">¿Soportan múltiples plantas/áreas?</h3>
+          <p class="text-sm text-slate-600 mt-1">Sí. Jerarquías por sitio, área y equipo con permisos por rol.</p>
+        </div>
+        <div class="p-5 rounded-2xl border border-slate-200 bg-white">
+          <h3 class="font-medium">¿Cómo se calcula el precio?</h3>
+          <p class="text-sm text-slate-600 mt-1">Por sitio y usuarios. Contáctanos para una propuesta a tu medida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="rounded-3xl border border-slate-200 bg-white p-6 md:p-8">
+        <div class="grid md:grid-cols-3 gap-8 items-center">
+          <div class="md:col-span-2">
+            <h2 class="text-2xl font-bold">Agenda una demo</h2>
+            <p class="mt-1 text-slate-600 text-sm">Déjanos tu correo y te contactamos en menos de 24 h.</p>
+            <form id="leadForm" class="mt-4 flex flex-col sm:flex-row gap-3">
+              <input id="emailInput" type="email" required placeholder="tu@empresa.com" class="flex-1 px-4 py-3 rounded-2xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-300" />
+              <button class="px-5 py-3 rounded-2xl bg-brand text-white hover:opacity-90">Enviar</button>
+            </form>
+            <div class="mt-3 text-sm text-slate-500 flex items-center gap-4 flex-wrap">
+              <span>📧 arturoescobos@hotmail.com</span>
+              <span>📞 +52 ••• ••• ••••</span>
+            </div>
+          </div>
+          <div class="md:col-span-1">
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+              <div class="font-semibold">Incluye en el piloto</div>
+              <ul class="mt-2 text-sm text-slate-600 space-y-2">
+                <li>✔ Configuración de áreas y equipos</li>
+                <li>✔ Plantillas de captura</li>
+                <li>✔ Tablero base OEE/Paros</li>
+                <li>✔ 1 sesión de entrenamiento</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 py-8 text-sm text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div>© sandbox DowntimeIQ. Todos los derechos reservados.</div>
+      <div class="flex items-center gap-4">
+        <a href="#" class="hover:text-slate-700">Privacidad</a>
+        <a href="#" class="hover:text-slate-700">Términos</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/5213121217240?text=Hola%20me%20interesa%20DowntimeIQ" class="fixed bottom-5 right-5 rounded-full bg-green-500 text-white px-4 py-3 shadow-soft">WhatsApp</a>
+
+  <!-- Scripts -->
+  <script>
+    document.getElementById('leadForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value.trim();
+      if(!email) return;
+      const subject = encodeURIComponent('Interés en DowntimeIQ');
+      const body = encodeURIComponent('Hola, me interesa DowntimeIQ. Mi correo es: ' + email);
+      window.location.href = 'mailto:arturoescobos@hotmail.com?subject=' + subject + '&body=' + body;
+    });
+  </script>
 </body>
 </html>
